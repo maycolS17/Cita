@@ -11,47 +11,60 @@
 </head>
 
 <body>
-    <div class="container">
-        <div>
-            <h1>ESOO!! BUENA ELECCION MI AMOR</h1>
-            <p>ahora cuentas con 2 opciones:</p>
-            <br />
-            ¿Quieres que nuestra cita sea escogida por mi? O ¿Quieres escoger tu la
-            cita?
-            <div class="col-md-6 mx-auto gap-2">
-                <button type="button" class="btn btn-primary">Elige por mi</button>
-                <button id="btnAbrir" type="button" class="btn btn-primary">
-                    Quiero escoger la cita
-                </button>
-            </div>
-
-            <div id="modal">
-                <h2>Proxima Cita</h2>
-                <p>Selecciona el lugar para nuestra cita:</p>
-                <div class="form-check">
-                    <input type="radio" id="opcion1" name="lugar" value="opcion1" />
-                    <label for="opcion1">Chilis</label>
-
-                    <input type="radio" id="opcion2" name="lugar" value="opcion2" />
-                    <label for="opcion2">Beso Frances</label>
-
-                    <input type="radio" id="opcion3" name="lugar" value="opcion3" />
-                    <label for="opcion3">Conamu</label>
-
-                    <input type="radio" id="opcion4" name="lugar" value="opcion4" />
-                    <label for="opcion4">Cafeteria Napoleon</label>
-                </div>
-                <p>La cita sera el dia: 04/11/2026 <br> quieres cambiar la cita?</p>
-                <button type="button" class="btn btn-primary">Quiero Cambiarla</button>
-                <div class="form-date">
-                    <label for="fecha">Fecha que quieres la cita:</label>
-                    <input type="date" id="fecha" name="fecha" />
-                </div>
+    <div class="page-container">
+        <div class="romantic-card">
+            <span class="heart-decoration">❤️</span>
+            <span class="heart-decoration">💕</span>
+            <span class="heart-decoration">❤️</span>
+            <span class="heart-decoration">💕</span>
+            <h1 class="celebrate-text">ESOO!! BUENA ELECCION MI AMOR</h1>
+            <p class="options-text">Ahora cuentas con 2 opciones:</p>
+            <p class="question-text">¿Quieres que nuestra cita sea escogida por mi? O ¿Quieres escoger tu la cita?</p>
+            <div class="button-group">
+                <button id="btnElige" type="button" class="btn btn-romantic-primary">Elige por mi</button>
+                <button id="btnEscoger" type="button" class="btn btn-romantic-secondary">Quiero escoger la cita</button>
             </div>
         </div>
     </div>
 
-    <link>
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <h2 class="modal-title">Proxima Cita</h2>
+            <p class="modal-subtitle">Selecciona el lugar para nuestra cita:</p>
+            <div class="radio-group">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="chilis" name="lugar" value="chilis" />
+                    <label class="form-check-label" for="chilis">Chilis</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="beso" name="lugar" value="beso" />
+                    <label class="form-check-label" for="beso">Beso Frances</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="conamu" name="lugar" value="conamu" />
+                    <label class="form-check-label" for="conamu">Conamu</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="napoleon" name="lugar" value="napoleon" />
+                    <label class="form-check-label" for="napoleon">Cafeteria Napoleon</label>
+                </div>
+            </div>
+            <div class="date-info">
+                <p>La cita sera el dia: 04/11/2026</p>
+                <button id="btnCambiar" type="button" class="btn-change">Quiero Cambiarla</button>
+                <div class="form-date">
+                    <label for="fecha">Selecciona la fecha que quieres:</label>
+                    <input type="date" id="fecha" name="fecha" />
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="btnCerrarModal" type="button" class="btn btn-romantic-no" style="width:auto;padding:10px 25px;font-size:0.95rem">Cancelar</button>
+                <button id="btnConfirmar" type="button" class="btn btn-romantic-yes" style="width:auto;padding:10px 25px;font-size:0.95rem">Confirmar Cita</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../index.js"></script>
 </body>
 
 </html>
