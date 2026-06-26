@@ -15,7 +15,7 @@ if (btnNo) {
             btnNo.textContent = mensajes[contador];
             contador++;
         } else {
-            window.location.href = '../Inicio.html';
+            window.location.href = 'Inicio.html';
         }
     });
 }
