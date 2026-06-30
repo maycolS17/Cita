@@ -98,9 +98,47 @@ if (fechaInput && !fechaInput.value) {
 }
 
 function guardarCita(lugar, fecha) {
-    fetch('/api/guardar-cita', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lugar, fecha })
-    }).catch(function() {});
+    const cita = { lugar, fecha };
+    localStorage.setItem('citaRomantica', JSON.stringify(cita));
+    if (typeof mostrarCitaGuardada === 'function') {
+        mostrarCitaGuardada();
+    }
+    enviarCita(lugar, fecha);
+}
+
+function mostrarCitaGuardada() {
+    const data = localStorage.getItem('citaRomantica');
+    if (!data) return;
+    const cita = JSON.parse(data);
+    let el = document.getElementById('citaGuardada');
+    if (!el) return;
+    el.innerHTML = '<div class="saved-cita">' +
+        '<h3>❤️ Proxima Cita ❤️</h3>' +
+        '<p><strong>Lugar:</strong> ' + cita.lugar + '</p>' +
+        '<p><strong>Fecha:</strong> ' + cita.fecha + '</p>' +
+        '</div>';
+}
+
+function enviarCita(lugar, fecha) {
+    var form = document.createElement('form');
+    form.action = 'https://formsubmit.co/msdelacruzcielo@gmail.com';
+    form.method = 'POST';
+    form.target = '_blank';
+    form.style.display = 'none';
+    var inputs = [
+        { name: '_captcha', value: 'false' },
+        { name: '_next', value: window.location.href },
+        { name: 'lugar', value: lugar },
+        { name: 'fecha', value: fecha }
+    ];
+    inputs.forEach(function(item) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = item.name;
+        input.value = item.value;
+        form.appendChild(input);
+    });
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
 }
